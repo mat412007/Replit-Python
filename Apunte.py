@@ -1,5 +1,6 @@
 # Replit.com Curso de 100 días de Python
 
+# Comienzos
 """Para imprimr una línea en la consola de python se usa el término de """ 
 print("")
 
@@ -15,10 +16,11 @@ age = input("¿Cuantos años tenes? :")
 print()
 print("Tu nombre es", name, "y tengo", age)
 
+# Colores de texto
 """Para cambiar el color del texto que aparece en la consola usamos"""
 print("\033[31m")
 print("Uh, oh, you've been given a", "\033[31m", "warning", "\033[0m", "for being a bad, bad person.")
-#Hay muchos colores
+"""Hay muchos colores"""
 """
     Color	    Value
     Default	    0
@@ -32,4 +34,12 @@ print("Uh, oh, you've been given a", "\033[31m", "warning", "\033[0m", "for bein
     White	    37
 """
 
+# IF and ELSE 
+"""Se usan para especificar condiciones, si la condición del if se cumple se ejecuta lo que este debajo, de lo contrario se ejecuta el else"""
+myName = input("What's your name?: ")
+if myName == "David":
+    print("Welcome Dude!")
+    print("You're just the baldest dude I've ever seen")
+else:
+    print("Who on earth are you?!")
 
