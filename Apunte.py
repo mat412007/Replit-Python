@@ -110,4 +110,29 @@ if myPi == 3.142 :
 else:
   print("Try again 😭")
   
+# Math Principles
+"""Ahora introducimos unas operaciones matemáticas en el código"""
+adding = 4 + 3 # = 7
+print(adding)
+
+subtraction = 8 - 9 # = -1
+print(subtraction)
+
+multiplication = 4 * 32 # = 128
+print(multiplication)
+
+division = 50 / 5 # = 10.0
+print(division)
+
+squared = 5**2 # = 25
+print(squared)
+
+modulo = 15 % 4 # = 3
+print(modulo)
+
+divisor = 15 // 2 # = 7
+print(divisor)
+
+answer = 98.52 / 3
+answer = round(answer, 2) # round reduce los decimales del número según lo que insertes, en este caso daría = 32.84
 
