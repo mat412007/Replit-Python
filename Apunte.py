@@ -42,4 +42,72 @@ if myName == "David":
     print("You're just the baldest dude I've ever seen")
 else:
     print("Who on earth are you?!")
+    
+# ELIF
+"""El elif es un extra en las condiciones de if y else, se usa para poner condiciones extra"""
+print("SECURE LOGIN")
+username = input("Username > ")
+password = input("Password> ")
+if username == "mark" and password == "password":
+ print("Welcome Mark!")
+elif username == "suzanne" and password == "Su74nne":
+ print("Hey there Suzanne!")
+else:
+ print("Go away!")
+ 
+# Nesting Code
+"""Con esto nos referimos por ejemplo a insertar un if dentro de otro if"""
+tvShow = input("What is your favorite tv show? ")
+if tvShow == "peppa pig":
+  print("Ugh, why?")
+  faveCharacter = input("Who is your favorite character? ")
+  if faveCharacter == "daddy pig":
+    print("Right answer")
+  else:
+    print("Nah, Daddy Pig's the greatest")
+elif tvShow == "paw patrol":
+  print("Aww, sad times")
+else:
+  print("Yeah, that's cool and all…")
+
+# AND, OR , NOT
+"""Estas palabras se usan para aclarar condiciones"""
+if username == "mark" and password == "password":
+    print("Welcome Mark!")
+    
+if name == "Dave" or name == "dave":
+  print("Hi Dave")
+  
+if not name == "Dave":
+  print("Hi Dave")
+  
+# Condicines con números
+"""En los if también se apoyan otros símbolos para especificar otras cosas que no sean igualidades"""
+5 == 5
+3 != 5
+5 > 3
+5 >= 3
+3 < 5
+3 <= 5
+
+myScore = input("Your score: ")
+if myScore > 100000:
+  print("Winner!")
+else:
+  print("Try again 😭")
+  
+# INT y FLOAT
+"""Hay dos tipos de números en la computadora para que reconozca, enteros y con coma. Para cambiar un INPUT a un valor numérico se usan de la siguiente manera"""
+myScore = int(input("Your score: "))
+if myScore > 100000:
+  print("Winner!")
+else:
+  print("Try again 😭")
+  
+myPi = float(input("What is Pi to 3dp? "))
+if myPi == 3.142 :
+  print("Exactly!")
+else:
+  print("Try again 😭")
+  
 
