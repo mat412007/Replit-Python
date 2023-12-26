@@ -136,3 +136,82 @@ print(divisor)
 answer = 98.52 / 3
 answer = round(answer, 2) # round reduce los decimales del número según lo que insertes, en este caso daría = 32.84
 
+# Debugging Code
+"""Cuando hablamos de un bug, nos referimos a un error en el código, debug es la acción de corregir esos errores"""
+
+# Rock, Paper, Scissor game!
+from getpass import getpass as input #Esta línea se asegura de que los input no sean visibles
+print("Welcome to the Rock, Paper, Scissors game!")
+print("Please choose R, P or S")
+print()
+user_1 = input("Player 1: ")
+print()
+user_2 = input("Player 2: ")
+print()
+if user_1 == "R" and user_2 == "S":
+  print("Player 1 wins!")
+elif user_2 == "R" and user_1 == "S":
+  print("Player 2 wins!")
+elif user_1 == "S" and user_2 == "P":
+  print("Player 1 wins!")
+elif user_2 == "S" and user_1 == "P":
+  print("Player 2 wins!")
+elif user_1 == "P" and user_2 == "R":
+  print("Player 1 wins!")
+elif user_2 == "P" and user_1 == "R":
+  print("Player 2 wins!")
+elif user_1 == user_2:
+  print("Es un empate!")
+else:
+  print("Please choose R, P or S")
+
+# Loops
+"""Un while loop le permite a tu código repetirse a sí mismo según una condición que vos seteas"""
+exit = ""
+while exit != "yes":
+  animal = input("What animal do you want to hear? ")
+  print()
+  if animal == "cow":
+    print("Mooohhh")
+  elif animal == "lion":
+    print("Roarrrr")
+  elif animal == "snake":
+    print("Hisssss")
+  elif animal == "dog":
+    print("Woof woof")
+  elif animal == "cat":
+    print("Miow miow")
+  elif animal == "duck":
+    print("Quack quack")
+  else:
+    print("Sorry, I don't know that animal sound. Try again!")
+  print()
+  exit = input("Do you want to exit? ")
+
+# While True Loop
+"""Con tan solo poner el comando True como condición de un loop, se ejecutará hasta que se encuentre con el comando break"""
+counter = 0
+while True:
+  answer = int(input("Enter a number: "))
+  print("Adding it up!")
+  counter += answer
+  print("Current total is", counter)
+  addAnother = input("Add another? ")
+  if addAnother == "no":
+    break #Esto hace que salgas del while
+print("Bye!")
+
+# Continue and exit() command
+"""El comando continue reinica un loop desde el principio, y el exit() command hace que vos salgas de del programa completo"""
+while True:
+  print("You are in a corridor, do you go left or right?")
+  direction = input("> ")
+  if direction == "left":
+    print("You have fallen to your death")
+    break
+  elif direction == "right":
+    continue
+  else:
+    print("Ahh! You're a genius, you've won")
+    exit()
+print("The game is over, you've failed!")
