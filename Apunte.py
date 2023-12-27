@@ -215,3 +215,20 @@ while True:
     print("Ahh! You're a genius, you've won")
     exit()
 print("The game is over, you've failed!")
+
+# For Loop
+"""For cumple la misma función que un while loop, la única diferencia es que este sirve mejor cuando tenemos una idea de cuantas veces queremos que el loop se repita, todo esta información en una sola línea de código"""
+for counter in range(10): # range() es una función que crea una lista de números dentro del rango que creas. En el caso de un solo número, escala de uno en uno hasta llegar al número anterior al del rango
+  print(counter) # La variable que se inserta en el lugar de counter siempre comienza en 0, a menos de que haya dos números en la funcion range()
+
+# Range() command
+"""Este comando define un rango, pero según la cantidad de valores que insertes, del uno al tres, su comportamiento cambia"""
+for counter in range(10):
+  print(counter)
+  
+for i in range(1, 13):
+  print(i, "x 13 =", i * 13)
+
+for i in range(10, -1, -1):
+  print(i)
+
