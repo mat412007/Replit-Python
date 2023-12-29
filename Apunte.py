@@ -232,3 +232,79 @@ for i in range(1, 13):
 for i in range(10, -1, -1):
   print(i)
 
+# Libraries and random.randint() command
+"""Las librerías son colecciones de código que fueron escritas por otras personas, un ejemplo de estas librerías son los game engines"""
+import random
+print("WELCOME TO THE GAME")
+print()
+print("Guess a number from 1 to 1,000,000!")
+print()
+tries = 1
+number = random.randint(1,1000000)
+while True:
+  guess = int(input("What is your guess? "))
+  if guess < number:
+    print("Too low")
+    tries += 1
+  elif guess > number:
+    print("Too high")
+    tries += 1
+  elif guess == number:
+    print("Correct!")
+    break
+  else:
+    print("That is not a number I recognize.")
+print("It took you", tries, "guesses to get the number correct.")
+
+# Subroutine
+"""Una subrutina le dice a la compitadora que una pieza de código existe y que la corra una y otra vez, su estructura el comando def(), con el nombre de la subrutiba, los argumentos que recibe, y el código que tiene dentro"""
+def login():
+  while True:
+    name = input("Enter your name: ")
+    password = input("Enter your password: ")
+    if name == "admin" and password == "admin":
+      print("Login successful")
+      break
+    else:
+      print("Login failed")
+      continue
+print("Log into the server")
+login()
+
+# Parameters
+"""Parametros son adiciones para subrutinas para que puedan recibir información que después usan en su programa"""
+def whichCake(ingredient, base, coating):
+  if ingredient == "chocolate":
+    print("Mmm, chocolate cake is amazing")
+  elif ingredient == "broccoli":
+    print("You what mate?!")
+  else: 
+    print("Yeah, that's great I suppose...")
+  print("So you want a", ingredient, "cake on a", base, "base with", coating, "on top?")
+userIngredient = input("Name an ingredient: ")
+userBase = input("Name a type of base: ")
+userCoating = input("Fave cake topping: ")
+whichCake(userIngredient, userBase, userCoating)
+
+# Return command
+"""El comando return le permite a las subrutinas enviar información devuelta al programa principal, la función llamada se reemplaza con el valor retornado"""
+import random
+
+def rollDice(sides):
+  result = random.randint(1,sides)
+  return result
+
+def roll_6_and_8():
+  roll_6_sided_dice = rollDice(6)
+  roll_8_sided_dice = rollDice(8)
+  health = roll_6_sided_dice * roll_8_sided_dice
+  return health
+
+print("Character stats generator")
+haveACharacter = "yes"
+while haveACharacter == "yes":
+  character = input("Name your warrior: ")
+  health = str(roll_6_and_8())
+  print("Their health is ", health,"hp" ) 
+  haveACharacter = input("Want to create another character?")
+
