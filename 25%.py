@@ -1,9 +1,10 @@
+# from getpass import getpass as input 
 # print() -
 # varialbes -
 # input() -
 # concatenar -
 # if else elif -
-# int() float() -
+# int() float() str() -
 # color de texto ("\033[--m") -
 """
     Color	    Value
@@ -18,7 +19,6 @@
     White	      37
 """
 # anidar código -
-# and or not
 # condiciones numéricas -
 """
     ==
@@ -38,17 +38,18 @@ squared = 5**2 = 25
 modulo = 15 % 4 = 3
 divisor = 15 // 2 = 7
 """
-# round(answer, 2)
-# while True 
-# continue break exit()
+# round(answer, 2) -
+# while True -
+# continue break exit() -
+# import -
+# and or not
 # for
 # range() for counter in range(10):
-# import
 # random.randint(1,1000000)
 # subrutinas parametros
 # return
-# from getpass import getpass as input 
 
+import random
 print()
 print(("\33[31m"),"Welcome to the summary of the 25% of the course!!!",("\33[0m"))
 answer = input("Do you wanna keep going? yes or no: ")
@@ -73,12 +74,12 @@ while True:
     number2 = float(input("Second number: "))
     print()
     print("Suma, Resta, Multiplicación, División, Potencia, Modulo, Divisor")
-    suma = number1 + number2
-    resta = number1 - number2
-    multiplicacion = number1 * number2
-    division = number1 / number2
-    modulo = number1 % number2
-    divisor = number1 // number2
+    suma = round(number1 + number2, 3)
+    resta = round(number1 - number2, 3)
+    multiplicacion = round(number1 * number2, 3)
+    division = round(number1 / number2, 3)
+    modulo = round(number1 % number2, 3)
+    divisor = round(number1 // number2, 3)
     
     method = input("Choose the method: ")
     if method == "suma":
@@ -104,4 +105,37 @@ while True:
         continue
     elif answer == "no":
         break
+        
+print()
+print("Now we are gonna see Rock, Paper, Scissors Game")
+print("You are gonna play against the machine")
+print()
+points_user = 0
+points_machine = 0
+while True:
+    print("The user has", points_user, "and the machine has", points_machine)
+    eleccion = random.randint(1,3)
+    if eleccion == 1:
+        machine = "rock"
+    elif eleccion == 2:
+        machine = "paper"
+    elif eleccion == 3:
+        machine = "scissors"
+    print("The machine already chose, now you choose")
+    print("Rock, Paper or Scissors")
+    user = input()
+    if user == machine:
+        print("Empate")
+        print()
+        continue
+    elif user == "rock" and machine == "scissors" or user == "scissors" and machine == "paper" or user == "paper" and machine == "rock":
+        print("Punto para el usuario")
+        points_user += 1
+        print()
+        continue
+    elif machine == "rock" and user == "scissors" or machine == "scissors" and user == "paper" or machine == "paper" and user == "rock":
+       print("Punto para la máquina")
+       points_machine += 1
+       print()
+       continue
         
