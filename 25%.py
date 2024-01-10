@@ -46,10 +46,17 @@ divisor = 15 // 2 = 7
 # random.randint(1,1000000) -
 # for -
 # range() for counter in range(10): -
-# subrutinas parametros
-# return
+# subrutinas parametros -
+# return -
 
 import random
+def introduction(nombre, edad, pais):
+    print("Okay, so you are", nombre, ", you are", edad, "years old, and you are from", pais)
+
+def rand():
+    aleatorio = random.randint(1,100)
+    return aleatorio
+
 print()
 print(("\33[31m"),"Welcome to the summary of the 25% of the course!!!",("\33[0m"))
 answer = input("Do you wanna keep going? yes or no: ")
@@ -62,7 +69,7 @@ name = input("What's your name? ")
 age = input("How old are you? ")
 home = input("Where are you from? ")
 print()
-print("Okay, so you are", name, ", you are", age, "years old, and you are from", home)
+introduction(name, age, home)
 print()
 print("Now let's see some simple programs that are easy to understand")
 print()
@@ -158,7 +165,7 @@ print("Now we have the guess the number game!!")
 print("The machine chooses a number between 1 and 100 and you have 10 shots at guessing it")
 while True:
     print()
-    number = random.randint(1,100)
+    number = rand()
     print("The machine has chosen the number")
     for counter in range(10):
         guess = int(input("What's your guess? "))
