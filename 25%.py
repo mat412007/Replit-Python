@@ -3,7 +3,7 @@
 # varialbes -
 # input() -
 # concatenar -
-# if else elif -
+# if elif else -
 # int() float() str() -
 # color de texto ("\033[--m") -
 """
@@ -44,8 +44,8 @@ divisor = 15 // 2 = 7
 # import -
 # and or not -
 # random.randint(1,1000000) -
-# for 
-# range() for counter in range(10):
+# for -
+# range() for counter in range(10): -
 # subrutinas parametros
 # return
 
@@ -137,7 +137,7 @@ while True:
        points_machine += 1
        print()
     
-    if points_user != 3 and points_machine != 3:
+    if not points_user == 3 and not points_machine == 3:
         continue
     elif points_user == 3:
         print("The user wins!!")
@@ -153,4 +153,27 @@ while True:
     elif answer == "no":
         break
     
+print()
+print("Now we have the guess the number game!!")
+print("The machine chooses a number between 1 and 100 and you have 10 shots at guessing it")
+while True:
+    print()
+    number = random.randint(1,100)
+    print("The machine has chosen the number")
+    for counter in range(10):
+        guess = int(input("What's your guess? "))
+        if guess == number:
+            print("Congratulations, you have won!!")
+            break
+        elif guess < number:
+            print("Too low")
+        elif guess > number:
+            print("Too high")
+    print()
+    print("The number was", number)
+    answer = input("Do you wanna go again? yes or no ")
+    if answer == "yes":
+        continue
+    elif answer == "no":
+        break
                 
