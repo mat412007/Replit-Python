@@ -42,10 +42,10 @@ divisor = 15 // 2 = 7
 # while True -
 # continue break exit() -
 # import -
-# and or not
-# for
+# and or not -
+# random.randint(1,1000000) -
+# for 
 # range() for counter in range(10):
-# random.randint(1,1000000)
 # subrutinas parametros
 # return
 
@@ -132,10 +132,25 @@ while True:
         print("Punto para el usuario")
         points_user += 1
         print()
-        continue
     elif machine == "rock" and user == "scissors" or machine == "scissors" and user == "paper" or machine == "paper" and user == "rock":
        print("Punto para la máquina")
        points_machine += 1
        print()
-       continue
-        
+    
+    if points_user != 3 and points_machine != 3:
+        continue
+    elif points_user == 3:
+        print("The user wins!!")
+    elif points_machine == 3:
+        print("The machine wins!!")
+    print()
+    
+    answer = input("Do you wanna go again? yes or no ")
+    if answer == "yes":
+        points_user = 0
+        points_machine = 0
+        continue
+    elif answer == "no":
+        break
+    
+                
