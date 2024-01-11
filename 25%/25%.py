@@ -4,7 +4,7 @@
 # input() -
 # concatenar -
 # if elif else -
-# int() float() str() -
+# int() float() str() abs() -
 # color de texto ("\033[--m") -
 """
     Color	    Value
@@ -41,6 +41,7 @@ divisor = 15 // 2 = 7
 # round(answer, 2) -
 # while True -
 # continue break exit() -
+# librerías -
 # import -
 # and or not -
 # random.randint(1,1000000) -
