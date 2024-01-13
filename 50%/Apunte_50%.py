@@ -109,7 +109,7 @@ for i in range(0, 100):
 for i in range(0, 100):
   print(i, end="\v") # vertical tab
 
-print("If you put ", "\033[33m", "nothing as the ", "\033[35m", "end character ", "\033[32m", "then you don't ", "\033[0m", "get odd gaps ", sep="") # sep (separator) anula los espacios predeterminados de la concatenación de un string
+print("If you put ", "\033[33m", "nothing as the ", "\033[35m", "end character ", "\033[32m", "then you don't ", "\033[0m", "get odd gaps ", sep="") # sep (separator) especifica lo que separa cada sección de la concatenación de un print
 
 import os, time
 print('\033[?25l', end="") # Esto nos permite apagar el cursor de la consola
@@ -135,3 +135,64 @@ newPrint("red", "new program")
 newPrint("reset", " I can just call red('and') ")
 newPrint("red", "it will print in red ")
 newPrint("blue", "or even blue")
+
+# Format Strings
+"""Format Strings o f-strings, son la mejor manera de combinar variables y texto juntas, una mejor alternativa a la concatenación"""
+name = "Katie"
+age = "28"
+pronouns = "she/her"
+print("This is {}, using {} pronouns, and is {} years old.".format(name, pronouns, age))
+
+response = "This is {name}, using {pronouns} pronouns, and is {age} years old. Hello, {name}. How are you? Have you been having a great {age} years so far".format(name=name, pronouns=pronouns, age=age)
+print(response)
+
+response = f"This is {name}, using {pronouns} pronouns, and is {age} years old. Hello, {name}. How are you? Have you been having a great {age} years so far"
+print(response)
+
+def colorChange(color):
+  if color=="red":
+    return ("\033[31m")
+  elif color=="white":
+    return ("\033[0m")
+  elif color=="blue":
+    return ("\033[34m")
+  elif color=="yellow":
+    return ("\033[33m")
+  elif color == "green":
+    return ("\033[32m")
+  elif color == "purple":
+    return ("\033[35m")
+
+title = f"{colorChange('red')}={colorChange('white')}={colorChange('blue')}= {colorChange('yellow')}Music App {colorChange('blue')}={colorChange('white')}={colorChange('red')}="
+
+print(f"        {title:^35}")# left = <, right = >, center = ^
+print(f"🔥▶️\t{colorChange('white')}Radio Gaga")
+print(f"\t{colorChange('yellow')}Queen")
+
+prev = "prev"
+next = "next"
+pause = "pause"
+
+print(f"{colorChange('white')}{prev:<35}")
+print(f"{colorChange('green')}{next:^35}")
+print(f"{colorChange('purple')}{pause:>35}")
+
+print()
+print()
+text = "WELCOME TO"
+print(f"{colorChange('white')}{text:^35}")
+text = "--  ARMBOOK  --"
+print(f"{colorChange('blue')}{text:^35}")
+text = "Definitely not a rip off"
+print(f"{colorChange('yellow')}{text:>35}")
+text = "a certain other social"
+print(f"{colorChange('yellow')}{text:>35}")
+text = "networking site"
+print(f"{colorChange('yellow')}{text:>35}")
+text = "Honest."
+print(f"{colorChange('red')}{text:^35}")
+text = "Username: "
+username = input(f"{colorChange('white')}{text:^35}")
+text = "Password: "
+username = input(f"{colorChange('white')}{text:^35}") 
+
