@@ -105,7 +105,6 @@ for i in range(0, 100):
 for i in range(0, 100):
   print(i, end="\t") # tab indent
 
-
 for i in range(0, 100):
   print(i, end="\v") # vertical tab
 
@@ -196,3 +195,129 @@ username = input(f"{colorChange('white')}{text:^35}")
 text = "Password: "
 username = input(f"{colorChange('white')}{text:^35}") 
 
+# Lists
+"""Arrays are a place to store more than one thing with the same variable name. However, Python uses lists instead. Lists are literally lists of items. We can extract, remove, or change lists."""
+timetable = ["Computer Science", "Math", "English", "Art", "Watch TV"]
+for lesson in timetable:
+  print(lesson)
+  
+# Dynamic Lists
+"""Estas son listas a las que uno puede añadir o eliminar elementos. Para añadir usamos .append() y para eliminar usamos .remove()"""
+def printList():
+  print()
+  for item in toDoList:
+    print(item)
+  print()
+
+toDoList = []
+while True:
+  menu = input("ToDoList Manager\n\nDo you want to view, add or remove the to do list?\n")
+  if menu=="view":
+    printList()
+  elif menu=="add":
+    item = input("What do you want to add?\n")
+    toDoList.append(item)
+  elif menu=="remove":
+    item = input("What do you want to remove?\n")
+    if item in toDoList:
+      toDoList.remove(item)
+  answer = ("Wanna go again? yes or no")
+  if answer == "no":
+    break
+  
+"""When we have a list of data, being able to print out that data in pretty ways is something we need to be able to do. So "pretty printing" is actually a thing."""
+import os, time, random
+listOfEmail = []
+
+def prettyPrint():                                # Alternate
+  os.system("clear")                          # def prettyPrint():
+  print("listofEmail")                           # os.system("clear") 
+  print()                                        # print("listofEmail") 
+  counter = 1                                    # print()
+  for email in listOfEmail:                      # for index in range(len(listOfEmail)): ""len() muestra la cantidad de elementos de una lista""
+    color = random.randint(31,37)                #   print(f"{index}: {listOfEmail[index]}") 
+    print(f"\033[{color}m{counter}- {email}")    # time.sleep(1)
+    counter += 1 
+  print("\033[00m")
+  time.sleep(1)
+  
+while True:
+  print("SPAMMER Inc.")
+  menu = input("1. Add email\n2: Remove email\n3. Show emails\n4. Get SPAMMING\n> ")
+  if menu == "1":
+    email = input("Email > ")
+    listOfEmail.append(email)
+  elif menu =="2":
+    email = input ("Email > ")
+    if email in listOfEmail: # Comprobamos que el elemento este en la lista
+      listOfEmail.remove(email)
+  elif menu == "3": 
+    prettyPrint()
+  time.sleep(1)
+  os.system("clear")
+  answer = input("Wanna go again? ")
+  if answer == "yes":
+    break
+  
+# To do List
+import os, time
+
+def printList():
+  print()
+  for items in toDoList:
+    print(items)
+  print()
+
+toDoList = []
+while True:
+  menu = input("ToDo List Manager\nDo you want to view, add, edit, remove or delete the todo list?\n")
+  if menu=="view":
+    printList()
+  elif menu=="add":
+    item = input("What do you want to add?\n").title() 
+    toDoList.append(item)
+  elif menu=="remove":
+    item = input("What do you want to remove?\n").title()
+    check = input("Are you sure you want to remove this?\n")
+    if check[0]=="y":
+      if item in toDoList:
+        toDoList.remove(item)
+  elif menu=="edit":
+    item = input("What do you want to edit?\n").title()
+    new = input("What do you want to change it to?\n").title()
+    for i in range(0,len(toDoList)):
+      if toDoList[i]==item:
+        toDoList[i]=new
+  elif menu=="delete":
+    toDoList = []
+  time.sleep(1)
+  os.system('clear')
+  answer = input("Wanna go? ")
+  if answer == "yes":
+    break
+
+# String Manipulation
+"""Estas manipulaciones se insertan luego de la variable y se ejecutan en el orden en que se insertan"""
+"""
+.lower() = all letters are lower case
+.upper() = all letters are upper case
+.title() = capital letter for the first letter of every word
+.capitalize() = capital letter for the first letter of only the first word
+.strip() removes any spaces on either side of the word.
+"""
+def printList():
+  print()
+  for i in myList:
+    print(i)
+  print()
+
+myList = []
+while True:
+  first = input("First Name: ").strip().capitalize()
+  last = input("Last Name: ").strip().capitalize()
+  name = f"{first} {last}"
+  if name not in myList:
+    myList.append(name)
+  else:
+    print("ERROR: Duplicate name")
+  printList()
