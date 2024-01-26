@@ -342,3 +342,146 @@ maiden = all[2].strip() # Estas son las partes del input
 city = all[3].strip() # Estas son las partes del input
 name = f"{first[:3].title()}{last[:3].lower()} {maiden[:2].title()}{city[-3:].lower()}"
 print(f"Your Star Wars name is {name}")
+
+# Strings and Loops
+"""Como un string es una lista con otro estilo, lo podemos recorrer con un loop for, y a partir de eso trabajamos con sus caracteres uno por uno"""
+vowels = ["a","e","i","o","u"]
+myString = "Will my vowels now be yellow?"
+
+for letter in myString:
+  if letter.lower() in vowels:
+    print('\033[33m', end='') #yellow
+  print(letter, end="")
+  print('\033[0m', end='') #back to default
+  
+# Hangman
+import random, os, time
+
+listOfWords = ["apple", "orange", "grapes", "pear"]
+word = random.choice(listOfWords) # random.choice() picks a random item from a list
+letterPicked = []
+lives = 6
+
+while True:
+  time.sleep(1)
+  os.system("clear")
+  letter = input("Choose a letter: ").lower()
+  
+  if letter in letterPicked:
+    print("You've tried that before")
+    continue
+    
+  letterPicked.append(letter)
+  
+  if letter in word:
+    print("You found a letter")
+  else:
+    print("Nope, not in there")
+    lives -= 1
+  
+  allLetters = True
+  print()
+  for i in word:
+    if i in letterPicked:
+      print(i, end="")
+    else:
+      print("_", end="")
+      allLetters = False
+  print()
+
+  if allLetters:
+    print(f"You won with {lives} left!")
+    break
+
+  if lives<=0:
+    print(f"You ran out of lives! The answer was {word}")
+    break
+  else:
+    print(f"Only {lives} left")
+
+# Dictionaries
+"""Dictionaries are a slightly different type of list that access data by giving each item a key. This creates what we call key:value pairs."""
+myUser = {"name": "David", "age": 128}
+myUser["name"] = "The legendary David"
+print(myUser["name"])
+print(f"Your name is {myUser['name']} and your age is {myUser['age']}") # No se repiten las mismas comillas
+
+name = input("Name: ").strip().capitalize()
+dob = input("Date of Birth: ").strip()
+tel = input("Telephone number: ").strip()
+email = input("Email: ")
+address = input("Address: ")
+contact = {"name": name, "dob": dob, "tel": tel, "email": email, "address": address}
+print()
+print(f"""Name: {contact["name"]}""")
+print(f"""DOB: {contact["dob"]}""")
+print(f"""Tel: {contact["tel"]}""")
+print(f"""Email: {contact["email"]}""")
+print(f"""Address: {contact["address"]}""")
+
+# Dictionaries with Loops
+"""Dictionaries and loops are a bit trickier. This is because each dictionary item is made up of two parts - the name of the key and the actual value of that key."""
+myDictionary = {"name" : "Ian", "health": 219, "strength": 199, "equipped": "Axe"}
+for value in myDictionary.values(): # .values() method can be run on a data type. We still only get the value, and not the key.
+  print(value)
+print()
+for name,value in myDictionary.items(): # The .items() function returns the key name and value. 
+  print(f"{name}:{value}")
+  
+website = {"name": None, "url": None, "desc": None, "rating": None}
+for name in website.keys():
+  website[name] = input(f"{name}: ")
+print()
+for name, value in website.items():
+  print(f"{name}: {value}")
+  
+# MokeBeast
+mokedex = {"Beast Name": None, "Type": None, "Special Move": None, "HP": None, "MP": None}
+print("MokéBeast")
+print()
+for name, value in mokedex.items():
+  mokedex[name] = input(f"{name}:\t").strip().title()
+if mokedex["Type"]=="Earth":
+  print("\033[32m", end="")
+elif mokedex["Type"]=="Air":
+  print("\033[37m", end="")
+elif mokedex["Type"]=="Fire":
+  print("\033[31m", end="")
+elif mokedex["Type"]=="Water":
+  print("\033[34m", end="")
+else:
+  print("\033[33m", end="")
+for name, value in mokedex.items():
+  print(f"{name:<15}: {value}")
+  
+# Second Dimension Lists
+"""To add the second dimension, we put lists inside the first list."""
+my2DList = [ ["Johnny", 21, "Mac"],
+             ["Sian", 19, "PC"],
+             ["Gethin", 17, "PC"] ]
+my2DList[1][2] = "Linux"
+my2DList[0] = ["Juan", 30, "PC"] 
+print(my2DList[0])
+print(my2DList[1][2])
+
+import random
+def ran():
+  number = random.randint(1,90)
+  return number
+
+def prettyPrint():
+  for row in bingo:
+    print(row)
+
+bingo = []
+numbers = []
+for i in range(8):
+  numbers.append(ran())
+numbers.sort()
+
+bingo = [ [ numbers[0], numbers[1], numbers[2]],
+          [ numbers[3], "BINGO", numbers[4] ],
+          [ numbers [5], numbers[6], numbers[7]]
+        ]
+prettyPrint()
+
