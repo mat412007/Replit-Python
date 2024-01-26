@@ -321,3 +321,24 @@ while True:
   else:
     print("ERROR: Duplicate name")
   printList()
+  break
+  
+# String Slicing
+"""Esto nos permite tomar carácteres de un string, ya sea uno o más"""
+myString = "Hello there my friend."
+print(myString[0]) # H
+print(myString[6:11]) # there
+print(myString[:11]) # Hello there
+print(myString[12:]) # my friend
+print(myString[0:6:2]) # Hlo
+print(myString[::-1]) # dneirf ym ereht olleH
+print(myString.split()) # split() divide un string en palabras usando los espacios como separador ['Hello', 'there', 'my', 'friend.']
+
+print("STAR WARS NAME GENERATOR")
+all = input("Enter your first name, last name, Mum's maiden name and the city you were born in").split()
+first = all[0].strip()  # Estas son las partes del input
+last = all[1].strip() # Estas son las partes del input
+maiden = all[2].strip() # Estas son las partes del input
+city = all[3].strip() # Estas son las partes del input
+name = f"{first[:3].title()}{last[:3].lower()} {maiden[:2].title()}{city[-3:].lower()}"
+print(f"Your Star Wars name is {name}")
