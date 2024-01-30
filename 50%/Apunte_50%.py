@@ -477,7 +477,7 @@ bingo = []
 numbers = []
 for i in range(8):
   numbers.append(ran())
-numbers.sort()
+numbers.sort() # ordena la lista en orden ascendente
 
 bingo = [ [ numbers[0], numbers[1], numbers[2]],
           [ numbers[3], "BINGO", numbers[4] ],
@@ -485,3 +485,124 @@ bingo = [ [ numbers[0], numbers[1], numbers[2]],
         ]
 prettyPrint()
 
+# 2D Dynamic Lists
+listOfShame = [] 
+
+while True: 
+  menu = input("Add or Remove?") 
+  if(menu.strip().lower()[0]=="a"): # Uses selection to run the 'add' code if user inputs 'a'. I've "sanitized" the input here too.
+
+    name = input("What is your name? ")
+    age = input("What is your age? ")
+    pref = input("What is your computer platform? ")
+    row = [name, age, pref] 
+    listOfShame.append(row) 
+
+  else: 
+    name = input("What is the name of the record to delete?") 
+    for row in listOfShame: # Use a loop to extract one row at a time
+      if name in row: # Check if the name is in the extracted row.
+        listOfShame.remove(row) # remove the whole row if name is in it
+    
+  answer = input("Wanna go again?")
+  if answer == "n" or answer == "no":
+      break
+  
+
+import random, os, time
+def ran():
+  number = random.randint(1, 9)
+  return number
+
+def prettyPrint():
+  for row in bingo:
+    for item in row:
+      print(item, end="\t|\t")
+    print()
+
+def createCard():
+  global bingo  # permite declarar la variable dentro de la función
+  numbers = []
+  for i in range(8):
+    num = ran()
+    while num in numbers:
+      num = ran()
+    numbers.append(num)
+  numbers.sort()
+
+  bingo = [[numbers[0], numbers[1], numbers[2]],
+           [numbers[3], "BINGO", numbers[4]],
+           [numbers[5], numbers[6], numbers[7]]]
+
+bingo = []
+createCard()
+while True:
+  prettyPrint()
+  num = int(input("Next Number: "))
+  for row in range(3):
+    for item in range(3):
+      if bingo[row][item] == num:
+        bingo[row][item] = "X"
+
+  exes = 0
+  for row in bingo:
+    for item in row:
+      if item == "X":
+        exes += 1
+  if exes == 8:
+    print("You have won")
+    break
+  time.sleep(1)
+  os.system("clear")
+  
+# To Do List
+print("Managment To Do List")
+print()
+toDoList = []
+while True:
+  action = input("Do you want to view, add, edit, or   remove an item from the to do list?\n")  
+  if action == "add":
+    action = input("What do you want to add?\n")
+    due = input("When is it due by?\n")
+    priority = input("What is the priority?\n")
+    toDo = [action, due, priority]
+    if toDo in toDoList:
+      print("This is already in the list")
+    else:
+      toDoList.append(toDo)
+      print("Added")
+  elif action == "view":
+    view = input("Do you want to view all or view by priority?\n")
+    if view == "all":
+      print(toDoList)
+    elif view == "priority":
+      priority = input("What priority?\n")
+      for row in toDoList:
+        if priority in row:
+          print(row)
+  elif action == "edit":
+    edit = input("What do you want to edit?\n")
+    for row in toDoList:
+      if edit in row:
+        toDoList.remove(row)
+        action = input("What do you want to add?\n")
+        due = input("When is it due by?\n")
+        priority = input("What is the priority?\n")
+        toDo = [action, due, priority]
+        if toDo in toDoList:
+          print("This is already in the list")
+        else:
+          toDoList.append(toDo)
+          print("Added")
+  elif action == "remove":
+    remove = input("What do you want to remove?\n")
+    for row in toDoList:
+      if remove in row:
+        toDoList.remove(row)
+        print("Removed")
+
+  answer = input("Do you want to see the menu again?\n")
+  if answer == "yes":
+    continue
+  else:
+    break
