@@ -454,7 +454,7 @@ else:
 for name, value in mokedex.items():
   print(f"{name:<15}: {value}")
   
-# Second Dimension Lists
+# 2D Lists
 """To add the second dimension, we put lists inside the first list."""
 my2DList = [ ["Johnny", 21, "Mac"],
              ["Sian", 19, "PC"],
@@ -606,3 +606,183 @@ while True:
     continue
   else:
     break
+
+# 2D Dictionaries
+"""Remember that dictionaries are very similar to lists, except that they store data as key:value pairs. The value is what it's worth and the key is what it is called. The key is used to access the value, and keys are more meaningful than index numbers."""
+"""The key is the name of the beast, but the value is a whole new dictionary that contains the details of the beast.
+Each key:value pair in the dictionary is now a key that accesses a related dictionary."""
+def prettyPrint():
+  print()
+  for key, value in clue.items():
+    # moves along every 'key:subDictionary' pair and outputs the key (the name of the character).
+    print(key, end=": ")
+    for subKey, subValue in value.items():
+      # (nested) `for` loop moves along every subkey and subvalue in each subDictionary.
+      print(subKey, subValue, end=" | ")
+    print()
+    
+clue = {}
+while True:
+  name = input("Name: ")
+  location = input("Location: ")
+  weapon = input("Weapon: ")
+  clue[name] = {"location": location, "weapon":weapon} 
+  prettyPrint()
+  answer = input("Wanna go again?")
+  if answer == "no":
+    break
+  
+john = {"daysCompleted": 46, "streak": 22}
+janet = {"daysCompleted": 21, "streak": 21}
+erica = {"daysCompleted": 75, "streak": 6}
+courseProgress = {"John":john, "Janet":janet, "Erica":erica}
+
+print(courseProgress)
+print()
+print(courseProgress["Erica"])
+print()
+print(courseProgress["Erica"]["daysCompleted"])
+  
+mokedex = {}
+def prettyPrint():
+  print("Name\tType\tHP\tMP")
+  for key, value in mokedex.items():
+    print(f"{key:^12}|{value['type']:^10}|{value['hp']:^6}|{value['mp']:^6}")
+
+while True:
+  print("Add your Beast!")
+  name = input("Name > ").title()
+  type = input("Type > ").title()
+  hp = int(input("HP > "))
+  mp = int(input("MP > "))
+  mokedex[name] = { "name": name,"type": type, "hp": hp, "mp": mp}
+  print("----------")
+  print()
+  prettyPrint()
+  answer = input("Wanna add another beast? ")
+  if answer == "yes":
+    continue
+  else:
+    break
+  
+# Top Trumps
+trumps = {}
+trumps["David"] = {"Intelligence": 178, "Speed": 4, "Guile": 80, "Baldness Level": 99}
+trumps["Mr Spock"] = {"Intelligence": 200, "Speed": 50, "Guile": 50, "Baldness Level": 0}
+trumps["Moica from Friends"] = {"Intelligence": 150, "Speed": 50, "Guile": 50, "Baldness Level": 0}
+trumps["Professor X"] = {"Intelligence": 250, "Speed": 1, "Guile": 200, "Baldness Level": 101}
+
+while True:
+  print("TOP TRUMPS")
+  print()
+  print("Characters")
+  print()
+  for key in trumps:
+    print(key)
+  user = input("Pick your character\n> ")
+  comp = random.choice(list(trumps.keys())) # random.choice() elige al azar en una lista, y list() convierte el diccionario en una lista
+  print("Computer has picked", comp)
+
+  print("Choose your stat: Intelligence, Speed, Guile & Baldness Level")
+
+  answer = input("> ")
+
+  print(f"{user}: {trumps[user][answer]}")
+  print(f"{comp}: {trumps[comp][answer]}")
+
+  if trumps[user][answer] > trumps[comp][answer]:
+    print(user, "wins")
+  elif trumps[user][answer] < trumps[comp][answer]:
+    print(comp, "wins")
+  else:
+    print("Draw")
+    
+  answer = input("Wanna add another beast? ")
+  if answer == "yes":
+    continue
+  else:
+    break
+    
+    
+# Writting into a File
+"""We can write data to other files for longer term storage, then access it when we need it.
+
+When we use variables, lists, dictionaries and other data structures in our code, the data inside them are stored in the computer's RAM.
+
+RAM is temporary storage (usually called memory). It's used to hold data and instructions for programs that your computer currently has open.
+
+The problem is, that when a program finishes, or is closed, its data and instructions are removed from the RAM to free up space.
+
+This is why you had to re-input all of your test data for your dynamic list & dictionary programs every time you ran them. The contents of those lists/dictionaries were removed from RAM when the program finished executing."""
+
+f = open("savedFile.txt", "w") # Así es como se abre un archivo
+"""The variable (f): This is needed to allow your program to communicate to the file. Normally this would have a lovely meaningful name. However, you will need to type this variable name lots, and lots, and lots. So short is good. 'f' is short for 'file'.
+
+The file name (the first item in brackets, "savedFile.txt"): You MUST code this to match the filename EXACTLY and include the file extension.
+
+The 'w' (second item in brackets): This sets the permissions for the file. 'w' means 'write'. This means that if the file doesn't already exist, the program will create a new blank file with that file name. However, if it does already exist it will be overwritten with a blank file."""
+
+f = open("savedFile.txt", "w")
+f.write("Hello there") # .write() command will write the piece of data in brackets into the file. You can use as many of these as you want
+f.close() # Nothing gets saved until we close the file using the .close() command
+
+f = open("savedFile.txt", "a+") # 'a+' means 'add to the end of the file, or create a new one if it doesn't exist'
+whatText = input("> ")
+f.write(f"{whatText}\n")
+f.close()
+
+while True:
+  print("HIGH SCORE TABLE")
+  print()
+  name = input("INITIALS > ").upper()
+  score = input("SCORE > ")
+  print()
+
+  f = open("high.score", "a+")
+  f.write(f"{name} {score}\n")
+  f.close()
+
+  print("ADDED")
+  time.sleep(1)
+  os.system("clear")
+  answer = input("Wanna add another beast? ")
+  if answer == "yes":
+    continue
+  else:
+    break
+  
+# Reading from a File
+"""Once we've got data into a file, wouldn't it be just splendid to load it back into our program to use again?"""
+f = open("filenames.list", "r") # 'r' de 'read'
+contents = f.read() # .read() loads the contents of the file into a variable 
+contents = contents.split() # This splits the string into a list of individual elements.
+print(contents)
+contents = f.readline().strip() # Esto translada una línea de código a la vez, y el strip() remueve la nueva línea predeterminada del print()
+print(contents)
+f.close()
+
+f = open("filenames.list","r")
+while True:
+  contents = f.readline().strip()
+  if contents == "":
+    break
+  #The last line in the file will be a blank
+  #We break the loop if the line read is a blank
+  print(contents)
+  # Moved the print after the break so it won't output the final blank line.
+f.close()
+
+f = open("high.score", "r")
+scores = f.read().split("\n")
+f.close()
+
+highscore = 0
+name = None
+for rows in scores:
+  data = rows.split()
+  if data != []:
+    if int(data[1]) > highscore:
+      highscore = int(data[1])
+      name = data[0]
+print("The winner is", name, "with", highscore)
+
