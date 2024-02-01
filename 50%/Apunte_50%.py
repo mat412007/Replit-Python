@@ -110,7 +110,6 @@ for i in range(0, 100):
 
 print("If you put ", "\033[33m", "nothing as the ", "\033[35m", "end character ", "\033[32m", "then you don't ", "\033[0m", "get odd gaps ", sep="") # sep (separator) especifica lo que separa cada sección de la concatenación de un print
 
-import os, time
 print('\033[?25l', end="") # Esto nos permite apagar el cursor de la consola
 for i in range(1, 101):
   print(i)
@@ -164,7 +163,7 @@ def colorChange(color):
 
 title = f"{colorChange('red')}={colorChange('white')}={colorChange('blue')}= {colorChange('yellow')}Music App {colorChange('blue')}={colorChange('white')}={colorChange('red')}="
 
-print(f"        {title:^35}")# left = <, right = >, center = ^
+print(f"        {title:^35}")# left <, right >, center ^
 print(f"🔥▶️\t{colorChange('white')}Radio Gaga")
 print(f"\t{colorChange('yellow')}Queen")
 
@@ -786,3 +785,31 @@ for rows in scores:
       name = data[0]
 print("The winner is", name, "with", highscore)
 
+# Idea Storage
+"""Do you have brilliant ideas at inconvenient times? Do you need a handy way of storing those ideas? Have you never heard of smartphone voice note apps? Or pens and paper? """
+def add():
+  os.system("clear")
+  idea = input("Idea > ")
+  f = open("my.ideas", "a+")
+  f.write(f"{idea}\n")
+  f.close()
+  time.sleep(1)
+  os.system("clear")
+
+def show():
+  os.system("clear")
+  f = open("my.ideas", "r")
+  ideas = f.read().split("\n")
+  f.close()
+  ideas.remove("")
+  idea = random.choice(ideas)
+  print(idea)
+  time.sleep(2)
+  os.system("clear")
+
+while True:
+  menu = input("1: Add idea\n2: Show a random idea\n> ")
+  if menu == "1":
+    add()
+  else:
+    show()
