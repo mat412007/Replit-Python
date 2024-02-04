@@ -197,6 +197,8 @@ username = input(f"{colorChange('white')}{text:^35}")
 # Lists
 """Arrays are a place to store more than one thing with the same variable name. However, Python uses lists instead. Lists are literally lists of items. We can extract, remove, or change lists."""
 timetable = ["Computer Science", "Math", "English", "Art", "Watch TV"]
+print(f"Los {len(timetable)} elementos de la lista son:") # len() nos devuelve un número con la cantidad de elementos de la lista
+print()
 for lesson in timetable:
   print(lesson)
   
@@ -215,18 +217,16 @@ while True:
     printList()
   elif menu=="add":
     item = input("What do you want to add?\n")
-    toDoList.append(item)
+    toDoList.append(item) # .append() añade un elemento a una lista
   elif menu=="remove":
     item = input("What do you want to remove?\n")
     if item in toDoList:
-      toDoList.remove(item)
+      toDoList.remove(item) # .remove() elimina un elemento de una lista
   answer = ("Wanna go again? yes or no")
   if answer == "no":
     break
   
 """When we have a list of data, being able to print out that data in pretty ways is something we need to be able to do. So "pretty printing" is actually a thing."""
-import os, time, random
-listOfEmail = []
 
 def prettyPrint():                                # Alternate
   os.system("clear")                          # def prettyPrint():
@@ -239,7 +239,8 @@ def prettyPrint():                                # Alternate
     counter += 1 
   print("\033[00m")
   time.sleep(1)
-  
+
+listOfEmail = []
 while True:
   print("SPAMMER Inc.")
   menu = input("1. Add email\n2: Remove email\n3. Show emails\n4. Get SPAMMING\n> ")
@@ -255,11 +256,10 @@ while True:
   time.sleep(1)
   os.system("clear")
   answer = input("Wanna go again? ")
-  if answer == "yes":
+  if answer != "yes":
     break
   
 # To do List
-import os, time
 
 def printList():
   print()
@@ -329,7 +329,7 @@ print(myString[0]) # H
 print(myString[6:11]) # there
 print(myString[:11]) # Hello there
 print(myString[12:]) # my friend
-print(myString[0:6:2]) # Hlo
+print(myString[0:6:2]) # Hlo  al haber tres valores, dos marcan los elementos a tener en cuenta y el tercero marca la escala de transporte
 print(myString[::-1]) # dneirf ym ereht olleH
 print(myString.split()) # split() divide un string en palabras usando los espacios como separador ['Hello', 'there', 'my', 'friend.']
 
@@ -348,13 +348,12 @@ vowels = ["a","e","i","o","u"]
 myString = "Will my vowels now be yellow?"
 
 for letter in myString:
-  if letter.lower() in vowels:
-    print('\033[33m', end='') #yellow
+  if letter.lower() in vowels: # usamos el in para verificar si un valor está dentro de una lista
+    print('\033[33m', end='') 
   print(letter, end="")
-  print('\033[0m', end='') #back to default
+  print('\033[0m', end='') # back to default
   
 # Hangman
-import random, os, time
 
 listOfWords = ["apple", "orange", "grapes", "pear"]
 word = random.choice(listOfWords) # random.choice() picks a random item from a list
@@ -813,3 +812,4 @@ while True:
     add()
   else:
     show()
+    
