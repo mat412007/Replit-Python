@@ -33,8 +33,9 @@ for key, value in clue.items():
       print(subKey, subValue, end=" | ")
 """
 """
-open("savedFile.txt", "w")
+f = open("savedFile.txt", "w")
 f.write("Hello there")
+f.close()
 """
 """
 f = open("savedFile.txt", "a+")
@@ -53,23 +54,26 @@ f.close()
 """
 
 import random, os, time
+os.system("cls")
 while True:
   print()
   print("Welcome to the summary of the 50% of the course!!!\n")
-  go = input("Do you wanna access it? (y / n)\n")
+  go = input("Do you wanna access? (y / n)\n")
   if go[0].strip().lower() != "y":
     break
   time.sleep(1)
+  os.system("cls")
   print()
   name = input("What's your name? ")
   age = input("How old are you? ")
   home = input("Where are you from? ")
   print(f"\nOk, so you are {name}, you are {age} years old, and you live in {home}", end="")
-  time.sleep(1)
-  print("\n")
+  time.sleep(2)
+  os.system("cls")
+  print("")
+  print("Let's test your luck\nWe are gonna play Lotto!\n")
   while True:
     print(f"{'Lotto!':>30}")
-    print("Let's test your luck\nWe are gonna play Lotto!\n")
     lottery = ["Regular", "Good", "Very Good", "Excellent"]
     lottery1 = lottery[random.randint(0,3)]
     lottery2 = random.choice(lottery)
@@ -83,18 +87,20 @@ while True:
       print("What a terrible luck you have")
     print()
     answer = input("Wanna go again? ")
-    if answer == "yes":
+    if answer.strip().lower() == "y":
+      os.system("cls")
       continue
     else:
       break
+  os.system("cls")
   print()
   print("Now let's try with a To Do List")
   while True:
     print()
     print(f"{'ToDoList':>30}")
     ToDoList = []
-    procedure = input("Would you like to add, remove, edit or delete the list? ")
     while True:
+      procedure = input("Would you like to add, remove, edit or delete the list? ")
       if procedure.strip().lower() == "a":
         toDo = input("What would you like to add?\n")
         if toDo not in ToDoList:
@@ -116,21 +122,21 @@ while True:
         toDo = input("What would you like to change?\n")
         print()
         change = input("What would you like to insert instead?\n")
-        for edit in ToDoList:
-          if edit == toDo:
-            edit = change
+        if toDo in ToDoList:
+            toDo = change
         print("All done")
       print()
       for item in ToDoList:
         print(f"- {item}")
       print()
       answer = input("Wanna go again? ")
-      if answer == "yes":
+      if answer.strip().lower() == "y":
         continue
       else:
         break
     break
   print()
+  os.system("cls")
   print("It's time to do a mini test")
   while True:
     print()
@@ -144,21 +150,19 @@ while True:
       experience = input("What's your level of experience?\n")
       candidate = {"name": name, "age": age, "home": home, "experience": experience}
       info.append(candidate)
+      print()
       for item in info:
-          for key, value in candidate.items():
+          for key, value in item.items():
             print(f"{key}: {value}")
           print("---------------")
       answer = input("Wanna add another candidate? ")
-      if answer == "yes":
+      if answer.strip().lower() == "y":
         continue
       else:
         break
-    answer = input("Wanna go again? ")
-    if answer == "yes":
-      continue
-    else:
-      break
+    break
   print()
+  os.system("cls")
   print("Now let's do a little Mokebeast game")
   while True:
     print()
@@ -173,20 +177,19 @@ while True:
       ListBeast[name] = {"name":name, "type":type, "power":power}
       opponents.append(name)
       time.sleep(1)
-    if ListBeast[[opponents[0]][power]] < ListBeast[[opponents[1]][power]]:
-      print(f"{ListBeast[[opponents[1]][name]]} is the winner")
-    elif ListBeast[[opponents[0]][power]] > ListBeast[[opponents[1]][power]]:
-      print(f"{ListBeast[[opponents[0]][name]]} is the winner")
+      print()
+    if ListBeast[opponents[0]]["power"] < ListBeast[opponents[1]]["power"]:
+      print(f"{ListBeast[opponents[1]]["name"]} is the winner")
+    elif ListBeast[opponents[0]]["power"] > ListBeast[opponents[1]]["power"]:
+      print(f"{ListBeast[opponents[0]]["name"]} is the winner")
     print()
     answer = input("Wanna go again? ")
-    if answer == "yes":
+    if answer.strip().lower() == "y":
       continue
     else:
       break
   print()
-    
-
   again = input("Do you wanna go again? (y / n)\n")
   if again[0].strip().lower() == "y":
-    os.system("clear")
+    os.system("cls")
     continue
