@@ -19,12 +19,12 @@ last = all[1].strip()
 maiden = all[2].strip() 
 city = all[3].strip() 
 """
-# dictionaries
-# .values() .keys() .items() 
-# list()
-# 2D Lists
-# global
-# 2D Dictionaries
+# dictionaries -
+# .values() .keys() .items() -
+# list() -
+# 2D Lists -
+# global -
+# 2D Dictionaries -
 # Files
 """
 for key, value in clue.items():
@@ -72,7 +72,7 @@ while True:
     lottery = ["Regular", "Good", "Very Good", "Excellent"]
     lottery1 = lottery[random.randint(0,3)]
     lottery2 = random.choice(lottery)
-    lottery3 = random.choice("Regular Good Very Good Excellent".split())
+    lottery3 = random.choice("Regular,Good,Very Good,Excellent".split(","))
     print(f"{lottery1}\t{lottery2}\t{lottery3}\n")
     if lottery1 == lottery2 and lottery2 == lottery3:
       print("Looks like luck is on your side")
@@ -143,13 +143,42 @@ while True:
       if answer == "yes":
         continue
       else:
+        for item in info:
+          for key, value in candidate.items():
+            print(f"{key}: {value}")
+          print("---------------")
         break
     answer = input("Wanna go again? ")
     if answer == "yes":
       continue
     else:
       break
-
+  print()
+  print("Now let's do a little Mokebeast game")
+  while True:
+    print(f"{'Mokebeast':>30}")
+    ListBeast = {}
+    opponents = []
+    for i in range(2):
+      name = input("The name of your beast is: ")
+      type = input("What type is your beast? ")
+      power = random.randint(1,100)
+      print(f"The power of {name} is {power}")
+      ListBeast[name] = {"name":name, "type":type, "power":power}
+      opponents.append(name)
+      time.sleep(1)
+    if ListBeast[opponents[0][power]] < ListBeast[opponents[1][power]]:
+      print(f"{ListBeast[opponents[1][name]]} is the winner")
+    elif ListBeast[opponents[0][power]] > ListBeast[opponents[1][power]]:
+      print(f"{ListBeast[opponents[0][name]]} is the winner")
+    print()
+    answer = input("Wanna go again? ")
+    if answer == "yes":
+      continue
+    else:
+      break
+  print()
+    
 
   again = input("Do you wanna go again? (y / n)\n")
   if again[0].strip().lower() == "y":
