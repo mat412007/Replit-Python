@@ -6,12 +6,12 @@
 # format strings -
 # (f"{title:^35}") left <, right >, center ^ -
 # lists -
-# in  not in
-# len() .append() .remove() .sort()
+# in  not in -
+# len() .append() .remove() .sort() -
 # .lower() .upper() .title() .capitalize() .strip() -
-# myString[0:6:2]
+# myString[0:6:2] -
 # split() -
-# '\033[?25l' '\033[?25h'
+# '\033[?25l' '\033[?25h' -
 """
 all = input("Enter your first name, last name, Mum's maiden name and the city you were born in").split()
 first = all[0].strip()  
@@ -80,7 +80,8 @@ while True:
       print("Not bad, not bad at all")
     else:
       print("What a terrible luck you have")
-    answer = input("Wanna add another beast? ")
+    print()
+    answer = input("Wanna go again? ")
     if answer == "yes":
       continue
     else:
@@ -116,12 +117,38 @@ while True:
         if edit == toDo:
           edit = change
       print("All done")
-    answer = input("Wanna add another beast? ")
+    print()
+    for item in ToDoList:
+      print(f"- {item}")
+    print()
+    answer = input("Wanna go again? ")
     if answer == "yes":
       continue
     else:
       break
-
+  print()
+  print("It's time to do a mini test")
+  while True:
+    print(f"{'Test':>30}")
+    print("Let's name some men to become policemen")
+    info = []
+    while True:
+      name = input("What's your name?\n")
+      age = input("How old are you?\n")
+      home = input("Where are you from?\n")
+      experience = input("What's your level of experience?\n")
+      candidate = {"name": name, "age": age, "home": home, "experience": experience}
+      info.append(candidate)
+      answer = input("Wanna add another candidate? ")
+      if answer == "yes":
+        continue
+      else:
+        break
+    answer = input("Wanna go again? ")
+    if answer == "yes":
+      continue
+    else:
+      break
 
 
   again = input("Do you wanna go again? (y / n)\n")
