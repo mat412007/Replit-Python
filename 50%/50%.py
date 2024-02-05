@@ -54,6 +54,7 @@ f.close()
 
 import random, os, time
 while True:
+  print()
   print("Welcome to the summary of the 50% of the course!!!\n")
   go = input("Do you wanna access it? (y / n)\n")
   if go[0].strip().lower() != "y":
@@ -89,46 +90,50 @@ while True:
   print()
   print("Now let's try with a To Do List")
   while True:
+    print()
     print(f"{'ToDoList':>30}")
     ToDoList = []
     procedure = input("Would you like to add, remove, edit or delete the list? ")
-    if procedure.strip().lower() == "a":
-      toDo = input("What would you like to add?\n")
-      if toDo not in ToDoList:
-        ToDoList.append(toDo)
-        print("Added")
-      elif toDo in ToDoList:
-        print("This is already on the list")
-    elif procedure.strip().lower() == "r":
-      toDo = input("What would you like to remove?\n")
-      if toDo not in ToDoList:
-        print("Unfortunately this is not on the list")
-      elif toDo in ToDoList:
-        ToDoList.remove(toDo)
-        print("Removed")
-    elif procedure.strip().lower() == "d":
-        ToDoList = []
-        print("All cleared")
-    elif procedure.strip().lower() == "e":
-      toDo = input("What would you like to change?\n")
+    while True:
+      if procedure.strip().lower() == "a":
+        toDo = input("What would you like to add?\n")
+        if toDo not in ToDoList:
+          ToDoList.append(toDo)
+          print("Added")
+        elif toDo in ToDoList:
+          print("This is already on the list")
+      elif procedure.strip().lower() == "r":
+        toDo = input("What would you like to remove?\n")
+        if toDo not in ToDoList:
+          print("Unfortunately this is not on the list")
+        elif toDo in ToDoList:
+          ToDoList.remove(toDo)
+          print("Removed")
+      elif procedure.strip().lower() == "d":
+          ToDoList = []
+          print("All cleared")
+      elif procedure.strip().lower() == "e":
+        toDo = input("What would you like to change?\n")
+        print()
+        change = input("What would you like to insert instead?\n")
+        for edit in ToDoList:
+          if edit == toDo:
+            edit = change
+        print("All done")
       print()
-      change = input("What would you like to insert instead?\n")
-      for edit in ToDoList:
-        if edit == toDo:
-          edit = change
-      print("All done")
-    print()
-    for item in ToDoList:
-      print(f"- {item}")
-    print()
-    answer = input("Wanna go again? ")
-    if answer == "yes":
-      continue
-    else:
-      break
+      for item in ToDoList:
+        print(f"- {item}")
+      print()
+      answer = input("Wanna go again? ")
+      if answer == "yes":
+        continue
+      else:
+        break
+    break
   print()
   print("It's time to do a mini test")
   while True:
+    print()
     print(f"{'Test':>30}")
     print("Let's name some men to become policemen")
     info = []
@@ -139,14 +144,14 @@ while True:
       experience = input("What's your level of experience?\n")
       candidate = {"name": name, "age": age, "home": home, "experience": experience}
       info.append(candidate)
+      for item in info:
+          for key, value in candidate.items():
+            print(f"{key}: {value}")
+          print("---------------")
       answer = input("Wanna add another candidate? ")
       if answer == "yes":
         continue
       else:
-        for item in info:
-          for key, value in candidate.items():
-            print(f"{key}: {value}")
-          print("---------------")
         break
     answer = input("Wanna go again? ")
     if answer == "yes":
@@ -156,6 +161,7 @@ while True:
   print()
   print("Now let's do a little Mokebeast game")
   while True:
+    print()
     print(f"{'Mokebeast':>30}")
     ListBeast = {}
     opponents = []
@@ -167,10 +173,10 @@ while True:
       ListBeast[name] = {"name":name, "type":type, "power":power}
       opponents.append(name)
       time.sleep(1)
-    if ListBeast[opponents[0][power]] < ListBeast[opponents[1][power]]:
-      print(f"{ListBeast[opponents[1][name]]} is the winner")
-    elif ListBeast[opponents[0][power]] > ListBeast[opponents[1][power]]:
-      print(f"{ListBeast[opponents[0][name]]} is the winner")
+    if ListBeast[[opponents[0]][power]] < ListBeast[[opponents[1]][power]]:
+      print(f"{ListBeast[[opponents[1]][name]]} is the winner")
+    elif ListBeast[[opponents[0]][power]] > ListBeast[[opponents[1]][power]]:
+      print(f"{ListBeast[[opponents[0]][name]]} is the winner")
     print()
     answer = input("Wanna go again? ")
     if answer == "yes":
