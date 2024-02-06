@@ -78,7 +78,7 @@ while True:
     lottery1 = lottery[random.randint(0,3)]
     lottery2 = random.choice(lottery)
     lottery3 = random.choice("Regular,Good,Very Good,Excellent".split(","))
-    print(f"{lottery1}\t{lottery2}\t{lottery3}\n")
+    print(f"{lottery1} | {lottery2} | {lottery3}\n")
     if lottery1 == lottery2 and lottery2 == lottery3:
       print("Looks like luck is on your side")
     elif lottery1 == lottery2 and lottery2 != lottery3 or lottery2 == lottery3 and lottery1 != lottery2 or lottery1 == lottery3 and lottery2 != lottery3:
@@ -122,8 +122,9 @@ while True:
         toDo = input("What would you like to change?\n")
         print()
         change = input("What would you like to insert instead?\n")
-        if toDo in ToDoList:
-            toDo = change
+        for index in range(len(ToDoList)):
+          if ToDoList[index] == toDo:
+            ToDoList[index] = change
         print("All done")
       print()
       for item in ToDoList:
