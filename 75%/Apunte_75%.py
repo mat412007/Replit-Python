@@ -88,6 +88,7 @@ while True:
 
 # Try...Except
 """Sometimes, we just can't code around a crash. It's coming anyway, and all you can do is brace for impact. Until now!"""
+myStuff = []
 try: # All the code that should work goes inside the try
   f.open("Stuff.mine","r")
   myStuff = eval(f.read())
@@ -95,7 +96,6 @@ try: # All the code that should work goes inside the try
 except Exception as err: # We can tell except what type of error(s) to look for. Exception (capital 'E') means 'every type'. I've captured the error type in the 'err' variable and printed it out to tell me what the error is.
   print("ERROR: Unable to load")
   print(err) 
-myStuff = []
 for row in myStuff:
   print(row)
 """--------------"""
@@ -112,6 +112,7 @@ except Exception:
 for row in myStuff:
   print(row)
 """-----------"""
+pizza = []
 try:
   f = open("pizza.txt", "r")
   pizza = eval(f.read())
@@ -154,7 +155,6 @@ def addPizza():
   row = [name, toppings, size, qty, total]
   pizza.append(row)
 
-pizza = []
 while True:
   time.sleep(1)
   os.system("clear")
@@ -168,3 +168,107 @@ while True:
   f = open("pizza.txt", "w")
   f.write(str(pizza))
   f.close()
+  answer = input("Wanna go again? ")
+  if answer.strip().lower() == "y":
+    break
+
+# RPG Inventory
+import os, time
+inventory = []
+
+try:
+  f = open("inventory.txt", "r")
+  inventory = eval(f.read())
+  f.close()
+except:
+  pass
+
+def addItem():
+  time.sleep(1)
+  os.system("clear")
+  print("INVENTORY")
+  print("=========")
+  print()
+  item = input("Item to add > ").capitalize()
+  inventory.append(item)
+  print("Added")
+
+def viewItem():
+  time.sleep(1)
+  os.system("clear")
+  print("INVENTORY")
+  print("=========")
+  print()
+  seen = []
+  for item in inventory:
+    if item not in seen:
+      print(f"{item} {inventory.count(item)}") # count() cuenta la cantidad de veces que un elemento está en una lista
+      seen.append(item)
+  time.sleep(2)
+
+def removeItem():
+  time.sleep(1)
+  os.system("clear")
+  print("INVENTORY")
+  print("=========")
+  print()
+  item = input("Item to remove > ").capitalize()
+  if item in inventory:
+    inventory.remove(item)
+    print("Removed")
+  else:
+    print("You don't have that item")
+
+while True:
+  time.sleep(1)
+  os.system("clear")
+  print("INVENTORY")
+  print("=========")
+  print()
+  menu = input("1: Add\n2: View\n3: Remove\n> ")
+  if menu=="1":
+    addItem()
+  elif menu=="2":
+    viewItem()
+  else:
+    removeItem()
+  f = open("inventory.txt", "w")
+  f.write(str(inventory))
+  f.close()
+  answer = input("Wanna go again? ")
+  if answer.strip().lower() == "y":
+    break
+  
+
+# CSV Files (Comma-Separated Values)
+"""CSV files are a way of storing a spreadsheet as a text file. Every value in the file is separated by a comma."""
+import csv # Imports the csv library
+
+with open("January.csv") as file: # Opens the csv file
+  reader = csv.reader(file) # reads the contents of the csv file into the 'reader' variable
+  line = 0
+  for row in reader: # loop to output each row in the 'reader' variable one at a time.
+    print (row)
+
+"""-------------------"""
+with open("January.csv") as file: 
+  reader = csv.reader(file) 
+  line = 0
+  for row in reader: 
+    print (", ".join(row)) # join() adds a comma and space and then joins data, you could try joining with tabs too with `\t`
+
+"""----------------------"""
+with open("January.csv") as file: 
+  reader = csv.DictReader(file) # Treats the file as a dictionary 
+  line = 0
+  for row in reader: 
+    print (row["Net Total"])
+
+"""-----------------------"""
+with open("January.csv") as file: 
+  reader = csv.DictReader(file) 
+  total = 0
+  for row in reader: 
+    print (row["Net Total"])
+    total += float(row["Net Total"]) # Keeps a running total
+print(f"Total: {total}") #Outputs
