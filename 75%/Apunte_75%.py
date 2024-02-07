@@ -108,7 +108,7 @@ try:
 except Exception:
   print("ERROR: Unable to load")
   if debugMode:
-    print(traceback) # Imprime el error en rojo de forma especifica
+    print('traceback') # Imprime el error en rojo de forma especifica
 for row in myStuff:
   print(row)
 """-----------"""
