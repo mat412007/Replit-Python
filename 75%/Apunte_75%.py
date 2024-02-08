@@ -1,6 +1,6 @@
 # Auto Save and Auto Load
 """ It's easy to access, amend, or remove a piece of data held in a list (in the RAM). Holding data in secondary storage in a file makes this more difficult. Or so you thought."""
-import os, time
+import os, time, random
 todo = []
 # Auto Load
 f = open("to.do", "r")
@@ -272,3 +272,106 @@ with open("January.csv") as file:
     print (row["Net Total"])
     total += float(row["Net Total"]) # Keeps a running total
 print(f"Total: {total}") #Outputs
+
+# The os Library
+print(os.listdir()) # Lists all the files in the current directory. Useful for checking that a file is in the folder we think it is.
+files = os.listdir()
+if "quickSave.txt" not in files:
+  print("Error: Quick Save not found.") # Chequea si el archivo está en la carpeta presente
+os.mkdir("Hello") # Creates a folder called 'Hello'
+os.rename("myname.txt", "NEW.o") # Renames 'myname.txt' to 'NEW.o'
+"""-------------------"""
+todo = []
+fileExists = True
+try:
+  f = open("to.do", "r")
+  todo = eval(f.read())
+  f.close()
+except:
+  fileExists = False
+
+def add():
+  time.sleep(1)
+  os.system("clear")
+  name = input("Name > ")
+  date = input("Due Date > ")
+  priority = input("Priority > ").capitalize()
+  row = [name, date, priority]
+  todo.append(row)
+  print("Added")
+
+def view():
+  time.sleep(1)
+  os.system("clear")
+  options = input("1: All\n2: By Priority\n> ")
+  if options=="1":
+    for row in todo:
+      for item in row:
+        print(item, end=" | ")
+      print()
+    print()
+  else:
+    priority = input("What priority? > ").capitalize()
+    for row in todo:
+      if priority in row:
+        for item in row:
+          print(item, end=" | ")
+        print()
+    print()
+  time.sleep(1)
+
+def edit():
+  time.sleep(1)
+  os.system("clear")
+  find = input("Name of todo to edit > ")
+  found = False
+  for row in todo:
+    if find in row:
+      found = True
+  if not found:
+    print("Couldn't find that")
+    return
+  for row in todo:
+    if find in row:
+      todo.remove(row)
+  name = input("Name > ")
+  date = input("Due Date > ")
+  priority = input("Priority > ").capitalize()
+  row = [name, date, priority]
+  todo.append(row)
+  print("Added")
+
+def remove():
+  time.sleep(1)
+  os.system("clear")
+  find = input("Name of todo to remove > ")
+  for row in todo:
+    if find in row:
+      todo.remove(row)
+
+while True:
+  menu = input("1: Add\n2: View\n3: Edit\n4: Remove\n> ")
+  if menu == "1":
+    add()
+  elif menu == "2":
+    view()
+  elif menu == "3":
+    edit()
+  else:
+    remove()
+    
+  time.sleep(1)
+  os.system("clear")
+  if fileExists:
+    try:
+      os.mkdir("backups")
+    except:
+      pass
+    name = f"backup{random.randint(1,1000000000)}.txt"
+    os.popen(f"cp to.do backups/{name}")
+  
+  f = open("to.do", "w")
+  f.write(str(todo))
+  f.close()
+
+# 
