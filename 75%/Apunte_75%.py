@@ -394,3 +394,56 @@ with open("100MostStreamedSongs.csv") as file:
     path = os.path.join(f"{artist}/", song)
     f = open(path, "w")
     f.close()
+
+# Recursion
+"""Recursion is a type of program where you get a subroutine to call itself. Recursion lets us solve problems in a more human way. Some mathematical problems can just be solved better using recursion."""
+def reverse(value):
+  if value <= 0:
+    print("Done!")
+    return
+  # This `if` provides the 'stop' condition for the program. Otherwise it would run forever.
+  else: # if we're not at the stop condition.
+    for i in range(value):
+      print("💯", end="") # Outputs 'value' emojis
+    print() # New line
+    reverse(value - 2) # takes 2 off the value and calls the subroutine again with this new number. Eg if value was 7 it would call 'reverse(value)' again with value as 5.
+reverse(7)
+"""--------------"""
+def factorial(value):
+  if value == 1:
+    return 1
+  else:
+    return value * factorial(value-1)
+print(factorial(5))
+
+# Debugger
+"""The debugger helps us keep track of what's going on without having to print all the time. We can slow down the execution of the program, keep track of what's stored in variables and lists at any given point, and set breakpoints on any lines that need special attention."""
+
+# Palindromes
+"""Estas son palabras simétricas, se leen igual en ambos sentidos""" #string.reverse() 
+def palindrome(word):
+  if len(word)<=1:
+    return True
+  if word[0] != word[-1]:
+    return False
+  return palindrome(word[::-1])
+print(palindrome("racecar"))
+"""--------------------"""
+def palindrome(word):
+  if len(word)<=1:
+    return True
+  elif word[0] != word[-1]:
+    return False
+  reverse = ""
+  for i in range(len(word)):
+    reverse = word[i] + reverse
+  return reverse
+
+word = input("Enter a word: ")
+reverse = palindrome(word)
+if reverse == word:
+  print("This is a palindrome")
+else:
+  print("Not a palindrome")
+  
+# 
