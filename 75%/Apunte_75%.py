@@ -446,4 +446,137 @@ if reverse == word:
 else:
   print("Not a palindrome")
   
-# 
+# The Magic of Time
+"""Your computer (and all of the other ones) uses something called the Unix epoch to measure time. It counts the amount of seconds elapsed since Jan 1st, 1970 (even when the power's off - there's a small battery on your motherboard that keeps this function running)."""
+import datetime
+myDate = datetime.date(year=2022, month=12, day= 7)
+myDate = datetime.date(2022, 12, 21)
+timestamp = datetime.datetime.now()
+today = datetime.date.today()
+difference = datetime.timedelta(days=14) # The difference I want
+newDate = today + difference 
+
+holiday = datetime.date(year = 2022, month = 10, day = 30) 
+if holiday > today: 
+  print("Coming soon")
+elif holiday < today: 
+  print("Hope you enjoyed it")
+else: 
+  print("HOLIDAY TIME!")
+"""--------------------"""
+today = datetime.date.today()
+print("EVENT COUNTDOWN")
+day = int(input("Day: "))
+month = int(input("Month: "))
+year = int(input("Year: "))
+event = datetime.date(year, month, day)
+difference = event - today
+difference = difference.days
+
+if difference>0:
+  print(f"{difference} days to go")
+elif difference<0:
+  print(f"😭😭😭😭😭😭😭 You missed it by {difference} days!")
+else:
+  print("🥳🥳🥳🥳🥳🥳🥳 Today!")
+  
+# Replit DB
+"""Replit DB (Database) is a Replit specific feature that allows you to store data directly in a repl using a built-in database."""
+from replit import db
+db["test"] = "Hello there" # Storing information
+keys = db.keys() # List all keys
+print(keys)
+value = db["test"] # Getting a keys value
+print(value)
+del db["test"] # Deleting a key
+db["login1"] = "david"
+db["login2"] = "pamela"
+db["login3"] = "sian"
+db["login4"] = "ian"
+matches = db.prefix("login") # Finding all matching keys
+print(matches)
+"""------------------"""
+db["david"] = {"username": "dmorgan", "password":"baldy1"} # Storing a dictionary
+keys = db.keys()
+print(keys)
+value = db["david"]
+print(value["password"])
+"""-----------------"""
+keys = db.keys()
+for key in keys:
+  print(f"{key}: {db[key]}") # Acessing all the keys and values
+"""------------------"""
+try:
+  value = db["key"]
+except:
+  pass
+"""--------------------"""
+def addTweet():
+  tweet = input("🐥 > ")
+  timestamp = datetime.datetime.now()
+  key = f"mes{timestamp}"
+  db[key] = tweet
+  time.sleep(1)
+  os.system("clear")
+
+def viewTweet():
+  matches = db.prefix("mes")
+  matches = matches[::-1]
+  counter = 0
+  for i in matches:
+    print(db[i])
+    print()
+    time.sleep(0.3)
+    counter+=1
+    if(counter%10==0):
+      carryOn = input("Next 10?: ")
+      if(carryOn.lower()=="no"):
+        break
+  time.sleep(1)
+  os.system("clear")
+
+while True:
+  print("Tweeter")
+  menu = input("1: Add Tweet\n2: View Tweets\n> ")
+  if menu == "1":
+    addTweet()
+  else:
+    viewTweet()
+  answer = input("Wanna go again? ")
+  if answer.strip().lower()[0] == "y":
+    continue
+  else:
+    break
+
+# Private Diary
+def addEntry():
+  time.sleep(1)
+  os.system("clear")
+  timestamp = datetime.datetime.now()
+  print(f"Diary entry for {timestamp}")
+  print()
+  entry = input("> ")
+  db[timestamp] = entry
+
+def viewEntry():
+  keys = db.keys()
+  for key in keys:
+    time.sleep(1)
+    os.system("clear")
+    print(f"""{key}: {db[key]}""")
+    print()
+    opt = input("Next or exit? > ")
+    if(opt.strip().lower()[0]=="e"):
+      break
+
+password = input("Password: ")
+if password != "baldy1":
+  print("Incorrect")
+  exit()
+while True:
+  os.system("clear")
+  menu = input("1: Add\n2: View\n> ")
+  if menu == "1":
+    addEntry()
+  else:
+    viewEntry()
