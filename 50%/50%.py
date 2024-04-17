@@ -7,8 +7,9 @@
 # (f"{title:^35}") left <, right >, center ^ -
 # lists -
 # in  not in -
-# len() .append() .remove() .sort() -
+# len() .append() .insert(2, item) .pop(3) .remove() .sort() -
 # .lower() .upper() .title() .capitalize() .strip() -
+# .find()
 # myString[0:6:2] -
 # split() -
 # '\033[?25l' '\033[?25h' -
